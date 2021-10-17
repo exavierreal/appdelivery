@@ -14,6 +14,10 @@ export type OrderLocationData = {
     address: string;
 }
 
+export type OrderResponse = {
+    id: number;
+}
+
 type ProductId = {
     id: number;
 }
@@ -21,3 +25,4 @@ type ProductId = {
 export type OrderPayload = {
     products: ProductId[];
 } & OrderLocationData;
+

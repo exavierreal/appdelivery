@@ -29,7 +29,8 @@ function OrderLocation( {onChangeLocation}: Props)  {
 
     const loadOptions = async (inputValue: string, callback: (places: Place[]) => void) => {
         const response = await fetchLocalMapBox(inputValue);
-      
+        
+        console.log(response.data)
         const places = response.data.features.map((item: any) => {
           return ({
             label: item.place_name,
@@ -41,8 +42,8 @@ function OrderLocation( {onChangeLocation}: Props)  {
           });
         });
       
-        callback(places);
-      };
+       callback(places);
+    };
       
       const handleChangeSelect = (place: Place) => {
         setAddress(place);
@@ -72,7 +73,7 @@ function OrderLocation( {onChangeLocation}: Props)  {
                     center={address.position} 
                     zoom={13} 
                     key={address.position.lat}
-                    scrollWheelZoom={false}
+                    scrollWheelZoom
                 >
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
