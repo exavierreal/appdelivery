@@ -4,6 +4,8 @@ import { Order } from '../types';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import "intl";
+import "intl/locale-data/jsonp/pt-BR"; 
 
 dayjs.locale('pt-br');
 dayjs.extend(relativeTime);
@@ -13,9 +15,9 @@ export function formatPrice(price: number) {
         style: 'currency',
         currency: 'BRL',
         minimumFractionDigits: 2
-    });
+    }).format(price);;
 
-    return formatter.format(price);
+    return formatter;
 }
 
 type Props = {
@@ -31,12 +33,12 @@ function OrderCard({ order }: Props) {
         <View style={styles.container}>
             <View style={styles.header}>
             <Text style={styles.orderName}>Pedido {order.id}</Text>
-            <Text style={styles.orderPrice}>R$ {formatPrice(order.total)}</Text>
+            <Text style={styles.orderPrice}>{formatPrice(order.total)}</Text>
             </ View>
             <Text style={styles.text}>{dateFromNow(order.moment)}</Text>
             <View style={styles.productsList}>
                 {order.products.map(product => (
-            <Text key={product.id} style={styles.text}>{product.name}n</Text>
+            <Text key={product.id} style={styles.text}>{product.name}</Text>
             ))}
             </View>
         </ View>
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
         lineHeight: 25,
         textAlign: 'right',
         letterSpacing: -0.24,
-        color: '#DA5C5C',
+        color: '#5436CC',
         fontFamily: 'OpenSans_700Bold'
     },
     productsList: {

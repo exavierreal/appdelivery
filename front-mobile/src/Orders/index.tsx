@@ -1,15 +1,19 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack'
 import { StyleSheet, ScrollView, Alert, Text, TouchableWithoutFeedback } from 'react-native';
 import { fetchOrders } from '../api';
 import Header from '../Header';
 import OrderCard from '../OrderCard';
-import { Order } from '../types';
+import { Order, RootStackParamList } from '../types';
+
+type OrderDetailsNavigationType = StackNavigationProp<RootStackParamList, 'OrderDetails'>;
+
 
 function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const navigation = useNavigation();
+  const navigation = useNavigation<OrderDetailsNavigationType>();
   const isFocused = useIsFocused();
 
   const fetchData = () => {

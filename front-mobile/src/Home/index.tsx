@@ -5,7 +5,7 @@ import { RectButton } from 'react-native-gesture-handler';
 import Header from '../Header';
 
 function Home() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
     const handleOnPress = () => {
       navigation.navigate('Orders');
@@ -30,15 +30,15 @@ function Home() {
 
 const styles = StyleSheet.create({
     container: {
-          marginTop: '5%',
+          marginTop: '2%',
           alignItems: 'center'
         },
         title: {
           color: '#263238',
-          fontSize: 26,
+          fontSize: 20,
           lineHeight: 35,
           fontWeight: 'bold',
-          marginTop: 31,
+          marginTop: 15,
           textAlign: 'center'
         },
         subTitle: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
           alignItems: 'center'
         },
         button: {
-          backgroundColor: '#DA5C5C',
+          backgroundColor: '#5436CC',
           flexDirection: 'row',
           borderRadius: 10
         },

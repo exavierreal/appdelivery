@@ -22,7 +22,7 @@ function Orders(){
        fetchProducts()
        .then(response => setProducts(response.data)) 
        .catch(() => {
-        toast.warning('Erro ao listar produtos');
+        toast.error('Erro ao listar produtos');
        })
     }, [] );
 
@@ -46,11 +46,11 @@ function Orders(){
     
       saveOrder(payload)
         .then((response) => {
-          toast.error(`Pedido enviado com sucesso! N° ${response.data.id}`);
+          toast.success(`Pedido enviado com sucesso! N° ${response.data.id}`);
           setSelectedProducts([]);
         })
         .catch(() => {
-          toast.warning('Erro ao enviar pedido');
+          toast.error('Erro ao enviar pedido');
         })
     }
 

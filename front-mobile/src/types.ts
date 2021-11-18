@@ -16,3 +16,10 @@ export type Product = {
     description: string;
     imageUri: string;
 }
+
+export type RootStackParamList={
+    Header: undefined;
+    Home: undefined;
+    OrderDetails: { order: Order } | undefined;
+    Orders: undefined;
+}

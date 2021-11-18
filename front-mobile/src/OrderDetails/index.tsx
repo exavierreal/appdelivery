@@ -1,11 +1,14 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack'
 import { StyleSheet, View, Text, Alert, Linking } from 'react-native';
 import Header from '../Header';
-import { Order } from '../types';
+import { Order, RootStackParamList } from '../types';
 import OrderCard from '../OrderCard';
 import { RectButton } from 'react-native-gesture-handler';
 import { confirmDelivery } from '../api';
+
+type OrdersNavigationType = StackNavigationProp<RootStackParamList, 'Orders'>;
 
 type Props = {
   route: {
@@ -17,7 +20,7 @@ type Props = {
 
 function OrderDetails({route}: Props) {
   const { order } = route.params;
-  const navigation = useNavigation();
+  const navigation = useNavigation<OrdersNavigationType>();
 
   const handleOnCancel = () => {
     navigation.navigate('Orders');
@@ -43,10 +46,10 @@ function OrderDetails({route}: Props) {
     <Header />
     <View style={styles.container}>
       <OrderCard order={order}/>
-      <RectButton style={styles.button}>
+      <RectButton style={styles.button}onPress={handleStartNavigator}>
         <Text style={styles.buttonText}>INICIAR NAVEGAÇÃO</Text>
       </RectButton>
-      <RectButton style={styles.button}>
+      <RectButton style={styles.button}onPress={handleConfirmDelivery}>
         <Text style={styles.buttonText}>CONFIRMAR ENTREGA</Text>
       </RectButton>  
       <RectButton style={styles.button} onPress={handleOnCancel}>
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
     paddingLeft: '5%'
   },
   button: {
-    backgroundColor: '#DA5C5C',
+    backgroundColor: '#5436CC',
     flexDirection: 'row',
     borderRadius: 10,
     marginTop: 40,
@@ -84,3 +87,4 @@ const styles = StyleSheet.create({
 });
 
 export default OrderDetails;
+

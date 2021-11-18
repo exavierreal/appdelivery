@@ -3,9 +3,9 @@ import axios from "axios";
 const API_URL = 'https://tcc-appdelivery.herokuapp.com'
 
 export function fetchOrders(){
-    return axios(`${API_URL}/orders`);
+    return axios.get<any>(`${API_URL}/orders`);
 }
 
 export function confirmDelivery(orderId: number) {
-   return axios.put(`${API_URL}orders/${orderId}/delivered`)
+   return axios.put<any>(`${API_URL}orders/${orderId}/delivered`)
 }
