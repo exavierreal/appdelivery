@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack'
-import { StyleSheet, ScrollView, Alert, Text, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, ScrollView, Alert, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { fetchOrders } from '../api';
 import Header from '../Header';
 import OrderCard from '../OrderCard';
@@ -47,7 +47,9 @@ function Orders() {
             <TouchableWithoutFeedback
               key={order.id}
               onPress={() => handleOnPress(order)}>
+              <View>
               <OrderCard order={order} />
+              </View>
             </TouchableWithoutFeedback>
           ))
         )}
@@ -64,3 +66,5 @@ const styles = StyleSheet.create({
 });
 
 export default Orders;
+
+

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { OrderPayload as OrderPayload, OrderResponse, Product } from "./Orders/types";
 
-const API_URL = 'https://rbettini-sds2.herokuapp.com';
+const API_URL = 'https://tcc-appdelivery.herokuapp.com';
 const mapboxToken = process.env.REACT_APP_ACCESS_TOKEN_MAP_BOX;
 
 export function fetchProducts() {
