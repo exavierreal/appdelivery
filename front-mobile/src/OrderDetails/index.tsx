@@ -52,9 +52,12 @@ function OrderDetails({route}: Props) {
       <RectButton style={styles.button}onPress={handleConfirmDelivery}>
         <Text style={styles.buttonText}>CONFIRMAR ENTREGA</Text>
       </RectButton>  
-      <RectButton style={styles.button} onPress={handleOnCancel}>
+      <RectButton style={styles.button} onPress={handleConfirmDelivery}>
         <Text style={styles.buttonText}>CANCELAR</Text>
-      </RectButton>      
+      </RectButton>  
+      <RectButton style={styles.button} onPress={handleOnCancel}>
+        <Text style={styles.buttonText}>VOLTAR</Text>
+      </RectButton>    
     </View>
     </>
   );
